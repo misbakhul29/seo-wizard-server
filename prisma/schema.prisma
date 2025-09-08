@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SavedArticle {
+  id                  String    @id @default(cuid())
+  savedAt             DateTime  @default(now())
+  primaryKeyword      String
+  userLsiKeywords     Json      // Stores string[]
+  articles            Json      // Stores Record<string, Article>
+  markdownContent     String
+  thumbnailUrl        String?
+  
+  // -- Kolom "Full Power SEO" --
+  generationSettings  Json      // Stores GenerationSettings object
+  searchIntent        String?   // Stores the intent string like 'Informational'
+  seoAnalysis         Json      // Stores SeoAnalysisData object
+  keywordResearchData Json?     // Stores KeywordSuggestion[]
+}
