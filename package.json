@@ -22,10 +22,14 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/connect-livereload": "^0.6.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/livereload": "^0.9.5",
     "@types/node": "^20.14.2",
     "@types/uuid": "^9.0.8",
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.10.3",
     "prisma": "^5.15.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",

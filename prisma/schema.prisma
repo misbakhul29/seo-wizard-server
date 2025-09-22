@@ -25,3 +25,35 @@ model SavedArticle {
   seoAnalysis         Json      // Stores SeoAnalysisData object
   keywordResearchData Json?     // Stores KeywordSuggestion[]
 }
+
+model Project {
+  id          String      @id @default(cuid())
+  title       String
+  subtitle    String
+  description String
+  imageUrl    String
+  tags        String[]
+  liveUrl     String
+  repoUrl     String
+  slug        String   @unique
+  content     String
+}
+
+model Author {
+  id   String @id @default(cuid())
+  name String @unique
+  articles Article[]
+}
+
+model Article {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  content     String
+  imageUrl    String?
+  slug        String   @unique
+  publishedAt DateTime @default(now())
+  tags        String[]
+  authorId    String   @default("default-author-id")
+  author      Author   @relation(fields: [authorId], references: [id])
+}
